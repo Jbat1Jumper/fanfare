@@ -31,3 +31,9 @@ After some feedback, focus on making the following melodies be more like the lik
 ```bash
 fanfare focus
 ```
+
+The intented usage is to use it to notify when a script finishes executing:
+
+```bash
+long-long-tests; deploy-awesome-app; sleep 30; fanfare play
+```
