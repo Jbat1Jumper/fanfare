@@ -8,9 +8,7 @@ use structopt::StructOpt;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 struct Model {
-    #[serde(default)]
     relaxed: bool,
-    #[serde(default)]
     wrote_down_stuff: bool,
     first: Vec<usize>,
     changes: Vec<Vec<usize>>,
