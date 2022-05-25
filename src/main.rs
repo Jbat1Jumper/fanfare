@@ -71,9 +71,17 @@ impl Model {
             self.last_fanfare = None;
         }
     }
+    fn path() -> std::path::PathBuf {
+        let path_str = if cfg!(windows) {
+            format!("{}/.fanfare", std::env::var("USERPROFILE").unwrap())
+        } else {
+            format!("{}/.fanfare", std::env::var("HOME").unwrap())
+        };
+        std::path::PathBuf::from(path_str)
+    }
     fn load() -> Self {
-        let path_str = format!("{}/.fanfare.json", std::env::var("HOME").unwrap());
-        let path = std::path::Path::new(&path_str);
+
+        let path = Self::path();
         if path.exists() {
             //println!("Loading model");
             let f = std::fs::File::open(path).expect("Failed to read resources file");
@@ -86,8 +94,7 @@ impl Model {
         }
     }
     fn store(&self) {
-        let path_str = format!("{}/.fanfare.json", std::env::var("HOME").unwrap());
-        let path = std::path::Path::new(&path_str);
+        let path = Self::path();
         //println!("Storing model");
         let f = std::fs::File::create(path).expect("Failed to write to resources file");
         serde_json::to_writer_pretty(f, self).expect("Failed to rialize to resources files");
