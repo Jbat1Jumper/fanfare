@@ -23,7 +23,7 @@ fanfare play
 If you liked the last melody, give feedback on it:
 
 ```bash
-fanfare was-good
+fanfare was-nice
 ```
 
 After some feedback, focus on making the following melodies be more like the liked ones:
