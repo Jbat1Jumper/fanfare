@@ -9,8 +9,7 @@ Then just do:
 
 ```bash
 git clone https://github.com/Jbat1Jumper/fanfare.git
-cd fanfare
-cargo install --path .
+cargo install --path fanfare
 ```
 
 ### Usage
