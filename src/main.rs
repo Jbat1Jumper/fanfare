@@ -26,7 +26,7 @@ fn pick_next(dist: &Vec<usize>, relaxed: bool) -> usize {
         .enumerate()
         .flat_map(|(note, q)| repeat(note).take(if relaxed { *q } else { *q - 1 }))
         .choose(&mut rng)
-        .unwrap()
+        .unwrap_or(0)
 }
 
 impl Model {
@@ -80,7 +80,6 @@ impl Model {
         std::path::PathBuf::from(path_str)
     }
     fn load() -> Self {
-
         let path = Self::path();
         if path.exists() {
             //println!("Loading model");
